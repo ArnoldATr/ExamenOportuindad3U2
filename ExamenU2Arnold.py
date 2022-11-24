@@ -1,66 +1,6 @@
 # Arnold Avalos Torres
 # No. Control: 18420428
 # Fecha 23/Octubre/2022
-
-# import json
-#
-# def codigospostales(municipio):
-#     codigosP = {}
-#     archivo = open('CPdescarga.txt', 'r')
-#
-#     cadena = archivo.read()
-#     cadena = cadena.replace('||','| |')
-#     listaCP = cadena.split("\n")
-#
-#     archivo.close()
-#
-#     i = 1
-#
-#     for mnp in listaCP:
-#         codigos = mnp.split("|")
-#         cp = {}
-#         if len(codigos)>1 :
-#             if codigos[3] == municipio:
-#                 cp["d_codigo"] = codigos[0]
-#                 cp["d_tipo_asenta"] = codigos[2]
-#                 cp["d_zona"] = codigos[13]
-#                 codigosP[f"{i}"] = cp
-#                 i=i+1
-#     retornoList = json.dumps(codigosP)
-#     print(retornoList)
-#
-# codigospostales('Jiquilpan')
-#
-#
-# def codigospostales2(estado):
-#     codigosP = {}
-#     archivo = open('CPdescarga.txt', 'r')
-#
-#     cadena = archivo.read()
-#     cadena = cadena.replace('||','| |')
-#     listaCP = cadena.split("\n")
-#
-#     archivo.close()
-#
-#     retornoList = []
-#
-#     for mnp in listaCP:
-#         codigos = mnp.split("|")
-#         # print(codigos)
-#         cp = {}
-#         if len(codigos) > 1:
-#             if codigos[4] == estado:
-#                 cp["d_codigo"] = codigos[0]
-#                 cp["D_mnpio"] = codigos[3]
-#                 retornoList.append(cp)
-#     codigosP[estado] = retornoList
-#     retornoList = json.dumps(codigosP)
-#     print(retornoList)
-#
-#     # print(agendaSLP)
-#
-# codigospostales2('Michoacán de Ocampo')
-
 import json
 
 contactos = [
@@ -69,6 +9,28 @@ contactos = [
     ("Javier", "Analista de datos", "javier@ejemplo.com"),
     ("Marta", "Experta en Python", "marta@ejemplo.com")
 ]
+
+def jsonbien():
+    con = []
+    i = 0
+    while i <= len(contactos[0]):
+        dicc = {}
+        dicc["nombre"] = contactos[i][0]
+        dicc["funcion"] = contactos[i][1]
+        dicc["correo"] = contactos[i][2]
+        con.append(dicc)
+        i = i + 1
+    return con
+
+    try:
+        con = jsonbien()
+    except:
+        print("Hay un error, lo siento...")
+        list = json.dumps(con)
+        print(list)
+
+print(jsonbien())
+
 
 
 
